@@ -1,0 +1,24 @@
+import random;
+
+Input = input("please enter bit input for chromosome  : ");
+mutation_prob = float(input("enter mutation probability"));
+Output = [];
+output = [];
+
+for i in range(0,len(Input)):
+    ran = random.uniform(0,1);
+    
+    if ran > mutation_prob :
+        if Input[i] == "1":
+            Output.append(0);
+        elif Input[i] == "0" : 
+            Output.append(1);
+            
+        output.append(1);
+    else:
+        Output.append(int(Input[i]));
+        output.append(0);
+        
+print(output);
+print(Output);
+    

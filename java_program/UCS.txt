@@ -1,0 +1,38 @@
+list = [("A","B",1),("A","C",4),("B","D",2),("B","E",1),("D","F",5),("D","G",1),("E","H",10)];
+output = [];
+startingNode = "A";
+startingNode = ("A",0);
+priorityQueue = [];
+priorityQueue.append(startingNode);
+notFound = True;
+
+output.append(startingNode[0]);
+
+while notFound :
+    startingNode = priorityQueue[0];
+    for i in list :
+        if i[0] == startingNode[0] :
+            node = (i[1],i[2] + startingNode[1]);
+            
+            # adding in priorityQueue
+            for index,p in enumerate(priorityQueue) :
+                if node[1] < p[1]:
+                    priorityQueue.insert(index,node);
+                    break;
+                    
+                if index + 1 >= len(priorityQueue) :
+                    priorityQueue.append(node);
+                    break;
+                    
+    priorityQueue.pop(0);
+    output.append(startingNode[0]);
+                    
+    if len(priorityQueue) == 0 :
+        notFound = False;
+        break;
+        
+output.pop(0);
+
+print("output");
+print(output);
+

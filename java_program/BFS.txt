@@ -1,0 +1,36 @@
+
+
+newList = [("A","B"),("A","C"),("B","D"),("B","E"),("D","F"),("D","G"),("E","H")];
+starting_node = "A";
+queue = [];
+output = [];
+iteraion = 0;
+found = True;
+
+# newList.pop();
+
+print(newList);
+
+node = ();
+
+print(node);
+
+queue.append(starting_node);
+output_val = input("node to be found : ");
+max_level = input("please input maximum level for DLS");
+
+while found :
+    starting_node = queue[0]
+    # put in output
+    output.append(starting_node)
+    # pop from stack
+    queue.pop(0);
+    # add 
+    for i in newList:
+        if i[0] == starting_node :
+            queue.append(i[1]);
+            
+    if starting_node == output_val:
+        found = False;
+        
+print(output)

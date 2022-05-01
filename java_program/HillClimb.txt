@@ -1,0 +1,98 @@
+import numpy as np;
+import random;
+
+landscape = np.random.randint(0,high=50,size=(10,10));
+
+print(landscape);
+
+node = (4,2);
+
+neightbour = [];
+dim = landscape.shape;
+
+def returnHighest(node):
+    StartingNode = [];
+    highest = landscape[node[0]][node[1]];
+    
+    if node[0] == 0 :
+        # first row
+        if node[1] == 0:
+            # first column
+            if highest < landscape[0][1]:
+                highest = landscape[0][1];
+                StartingNode = [node[0],node[1]];
+                
+            if highest < landscape[1][0]:
+                highest = landscape[1][0];
+                StartingNode = [node[1],node[0]];
+                
+            if highest < landscape[1][1]:
+                highest = landscape[1][1];
+                StartingNode = [node[1],node[1]];
+                
+        if node[1] > 0:
+            if highest < landscape[0][node[1] - 1]:
+                highest = landscape[0][node[1] - 1];
+                
+            if highest < landscape[0][node[1] + 1]:
+                highest = landscape[0][node[1] + 1];
+                
+            if highest < landscape[1][node[1] - 1]:
+                highest = landscape[1][node[1] - 1];
+                
+            if highest < landscape[1][node[1] + 1]:
+                highest = landscape[1][node[1] + 1];
+                
+            if highest < landscape[1][node[1]]:
+                highest = landscape[1][node[1]];
+                
+    if node[0] > 0 :
+        if node[1] == 0:
+            if highest < landscape[node[0]][1]:
+                highest = landscape[node[0]][1];
+                
+            if highest < landscape[node[0] - 1][0]:
+                highest = landscape[node[0] - 1][0];
+                
+            if highest < landscape[node[0] - 1][1]:
+                highest = landscape[node[0] - 1][1];
+                
+            if highest < landscape[node[0] + 1][0]:
+                highest = landscape[node[0] + 1][0];
+                
+            if highest < landscape[node[0] + 1][1]:
+                highest = landscape[node[0] + 1][1];
+                
+        if node[1] > 0 :
+            if highest < landscape[node[0]][node[1] - 1]:
+                highest = landscape[node[0]][node[1] - 1];
+                
+            if highest < landscape[node[0]][node[1] + 1]:
+                highest = landscape[node[0]][node[1] + 1];
+            
+            # top row
+                
+            if highest < landscape[node[0] - 1][node[1] - 1]:
+                highest = landscape[node[0] - 1][node[1] - 1];
+                
+            if highest < landscape[node[0] - 1][node[1]]:
+                highest = landscape[node[0] - 1][node[1]];
+                
+            if highest < landscape[node[0] - 1][node[1] + 1]:
+                highest = landscape[node[0] - 1][node[1] + 1];
+            
+            # lowest row
+                
+            if highest < landscape[node[0] + 1][node[1] - 1]:
+                highest = landscape[node[0] + 1][node[1] - 1];
+                
+            if highest < landscape[node[0] + 1][node[1]]:
+                highest = landscape[node[0] + 1][node[1]];
+                
+            if highest < landscape[node[0] + 1][node[1] + 1]:
+                highest = landscape[node[0] + 1][node[1] + 1];
+                
+    return highest;
+
+print(returnHighest(node));
+

@@ -1,0 +1,37 @@
+import random;
+
+# parents
+s = '1100110110110011'
+p = '1000110011011111'
+print("Parents")
+print("P1 :", s)
+print("P2 :", p, "\n");
+
+count = 0;
+
+while count < 5:
+    count = count + 1;
+    S = "";
+    P = "";
+    
+    ran = random.randint(1,len(p));
+    print(ran)
+    
+    for i in range(0,ran):
+        S = S + s[i];
+        P = P + p[i];
+    # print("S" , S);
+    # print("P" , P);
+        
+    for z in range(ran,len(p)):
+        S = S + p[z];
+        P = P + s[z];
+    # print("S" , S);
+    # print("P" , P);
+    
+    s = S;
+    p = P;
+    
+    print("Parents for iteration : " , count);
+    print("P1 :", s)
+    print("P2 :", p, "\n");

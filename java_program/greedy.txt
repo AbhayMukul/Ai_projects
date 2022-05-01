@@ -1,0 +1,32 @@
+nodeList = [("S","C"),("S","B"),("S","D"),("C","F"),("C","E"),("D","F"),("B","E"),("E","H"),("H","G"),("F","G")];
+heuristicValue = [("S",40),("B",32),("C",25),("D",35),("E",19),("F",17),("H",10),("G",0)];
+output = [];
+goalNode = "G";
+startingNode = "S";
+
+notFound = True;
+
+output.append(startingNode);
+    
+while notFound :
+    leastHeuristicValue = 100;
+    leastNode = "";
+    
+    for i in nodeList : 
+        if i[0] == startingNode :
+            
+            for h in heuristicValue :
+                if i[1] == h[0]:
+                    if h[1] < leastHeuristicValue :
+                        leastHeuristicValue = h[1];
+                        leastNode = h[0];
+                        
+    output.append(leastNode);
+    startingNode = leastNode;
+    
+    if leastNode == goalNode :
+        notFound =  False;
+        break;
+    
+print(output);
+            

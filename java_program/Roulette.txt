@@ -1,0 +1,27 @@
+import random;
+
+list = [("A",50),("B",20),("C",5),("D",15),("E",10)];
+sumList = [];
+outputSelection = [["A",0],["B",0],["C",0],["D",0],["E",0]];
+rounds = 100;
+
+sum = 0;
+for i in list :
+    sum = sum + i[1];
+    sumList.append((i[0],sum));
+
+for i in range(0,rounds):
+    node = "";
+    ran = random.randint(1,100);
+    for s in sumList:
+        if s[1] > ran :
+            # find location
+            for o in outputSelection :
+                if s[0] == o[0]:
+                    o[1] = o[1] + 1;
+                    node = o[0];
+                    break;
+            break;
+    
+print(outputSelection);
+    

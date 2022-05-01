@@ -1,0 +1,43 @@
+nodeValuelist = [("S","A",1),("S","G",10),("A","B",2),("A","C",1),("B","D",5),("C","D",3),("C","G",4),("S","V",100),("V","G",1)];
+heuristicFunctionValue = [("A",3),("B",4),("C",2),("D",6),("G",0),("V",0)];
+output = [];
+pathCost = 0;
+targetNode = "G";
+startingNode = "S";
+notFound = True;
+
+output.append("S");
+
+while notFound :
+    f = 100;
+    node = ();
+    
+    for i in nodeValuelist :
+        # print(startingNode);
+        if i[0] == startingNode :
+            # find heuristic value
+            for j in heuristicFunctionValue :
+                if i[1] == j[0]:
+                    costTotal = pathCost + i[2] + j[1];
+                    # print(j , " cost :: " , costTotal , "pathCost :: " , pathCost , "f ::" , f);
+                    if costTotal < f :
+                        f = costTotal;
+                        node = i;
+                        # print(node)
+                    break;
+                    
+    startingNode = node[1];
+    output.append(startingNode);
+    # print(startingNode);
+    pathCost = pathCost + node[2];
+    
+    if startingNode == targetNode:
+        notFound = False;
+        
+print("path is : ")
+for i in output[:-1]:
+    print(i , "->",end="");
+    
+print(output[-1]);
+
+print("cost is : " , pathCost); 
